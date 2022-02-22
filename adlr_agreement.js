@@ -14,6 +14,7 @@ AutoDealer.adlr_agreement = (function()
             let formContext = context.getFormContext();
 
             let nameAttr = formContext.getAttribute("adlr_name");
+            let autoAttr = formContext.getAttribute("adlr_auto");
             
             let creditTab = formContext.ui.tabs.get("CreditTab");
 
@@ -25,6 +26,11 @@ AutoDealer.adlr_agreement = (function()
             formContext.getControl("adlr_creditid").setVisible(false);
 
             nameAttr.addOnChange(nameOnChange);
+
+            if (nameAttr.getValue() != null && autoAttr.getValue() != null)
+            {
+                alert("It works!");
+            }
         }
     }
 })();
