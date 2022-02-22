@@ -14,14 +14,17 @@ AutoDealer.adlr_agreement = (function()
             let formContext = context.getFormContext();
 
             let nameAttr = formContext.getAttribute("adlr_name");
+            
+            let creditTab = formContext.ui.tabs.get("CreditTab");
+
+            creditTab.setVisible(false);
+
+            formContext.getControl("ownerid").setVisible(false);
+            formContext.getControl("adlr_total").setVisible(false);
+            formContext.getControl("adlr_fact").setVisible(false);
+            formContext.getControl("adlr_creditid").setVisible(false);
 
             nameAttr.addOnChange(nameOnChange);
-
-            let nameControl = formContext.getControl("adlr_name");
-            nameControl.setDisabled(true);
-
-            formContext.getControl("adlr_date").setVisible(false);
-
         }
     }
 })();
