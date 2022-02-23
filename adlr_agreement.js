@@ -9,6 +9,13 @@ AutoDealer.adlr_agreement = (function()
         nameAttr.addOnChange("Changed data " + nameOnChange);
     }
 
+    var autoOnChange = function(context)
+    {
+        let formContext = context.getFormContext();
+        let autoAttr = formContext.getAttribute("adlr_auto");
+        autoAttr.addOnChange("Changed data " + autoOnChange);
+    }
+
     return {
         onLoad : function (context) {
             let formContext = context.getFormContext();
@@ -25,12 +32,13 @@ AutoDealer.adlr_agreement = (function()
             formContext.getControl("adlr_fact").setVisible(false);
             formContext.getControl("adlr_creditid").setVisible(false);
 
-            nameAttr.addOnChange(nameOnChange);
-
             if (nameAttr.getValue() != null && autoAttr.getValue() != null)
             {
-                alert("It works!");
+                creditTab.setVisible(true);
             }
+
+            nameAttr.addOnChange(nameOnChange);
+            autoAttr.addOnChange(autoOnChange);
         }
     }
 })();
